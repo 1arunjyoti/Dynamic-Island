@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic Island </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="clock.css">
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+</style>
+</head>
+
+<body>
+    <div class="box">
+
+        <i class="switch_button"></i>
+        <i class="volume_up"></i>
+        <i class="volume_down"></i>
+        <i class="power_button"></i>
+
+        <div class="clock">
+            <div class="time"></div>
+            <div class="date-time"></div>
+        </div>
+
+        
+
+        <div class="screen">
+
+            
+            <div class="dynamic_island">
+                <div class="island_content">
+                    <div class="details">
+                        <div class="profile_pic">
+                            <img src="img.jpg" alt="">
+                        </div>
+                    </div>
+                    <p>Hello, There</p>
+                    <div class="action">
+                        <ion-icon name="call" class="red"></ion-icon>
+                        <ion-icon name="call" class="green"></ion-icon>
+                    </div>
+                </div>                
+            </div>
+           
+            <div class="doc"></div> 
+            <div class="docicons">
+                <div class="docapp"></div>
+                <div class="docapp"></div>
+                <div class="docapp"></div>
+                <div class="docapp"></div>
+            </div>
+
+
+        </div>
+        
+        <div class="chargingicon"></div>
+
+        <div class="status_clock">
+            <div class="status_time"></div>
+        </div>
+
+        <div class="apps">
+            <div class="appicons">
+                    <div class="app"></div>
+                    <div class="app"></div>
+                    <div class="app"></div>
+                    <div class="app"></div>
+            </div>
+            <div class="appicons">
+                    <div class="app_2_row"></div>
+                    <div class="app_2_row"></div>
+                    <div class="app_2_row"></div>
+                    <div class="app_2_row"></div>
+            </div>
+            <div class="appicons">
+                    <div class="app_3_row"></div>
+                    <div class="app_3_row"></div>
+                    <div class="app_3_row"></div>
+                    <div class="app_3_row"></div>
+            </div>
+        </div>  
+
+     </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        let popup = document.querySelector('.dynamic_island');
+        popup.onclick = function(){
+            popup.classList.toggle('active')
+        }
+    </script>
+
+                                    <!-- Lock Screen Clock-->
+
+    <script>
+        var time = document.querySelector(".time");
+        var dateTime = document.querySelector(".date-time");
+
+        function updateClock() {
+          // Get the current time, day , month and year
+          var now = new Date();
+          var hours = now.getHours();
+          var minutes = now.getMinutes();
+          var seconds = now.getSeconds();
+          var day = now.getDay();
+          var date = now.getDate();
+          var month = now.getMonth();
+        
+          // store day and month name in an array
+          var dayNames = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+          var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+          // format date and time
+          hours = hours % 12 || 12;
+          minutes = minutes < 10 ? "0" + minutes : minutes;
+          seconds = seconds < 10 ? "0" + seconds : seconds;
+          date = date < 10 ? "0" + date : date;
+
+          // display date and time
+          var period = hours < 12 ? "AM" : "PM";
+          time.innerHTML = hours + ":" + minutes ;
+          dateTime.innerHTML = dayNames[day] + ", " + monthNames[month] + " " + date;
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+
+                                    <!-- Status Clock-->
+    <script>
+        var status_time = document.querySelector(".status_time");
+        var status_date = document.querySelector(".status_date");
+
+        function updateClock() {
+          // Get the current time, day , month and year
+          var now = new Date();
+          var hours = now.getHours();
+          var minutes = now.getMinutes();
+          var seconds = now.getSeconds();
+          var day = now.getDay();
+          var date = now.getDate();
+          var month = now.getMonth();
+
+          // store day and month name in an array
+          var dayNames = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+          var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+          // format date and time
+          hours = hours % 12 || 12;
+          minutes = minutes < 10 ? "0" + minutes : minutes;
+          seconds = seconds < 10 ? "0" + seconds : seconds;
+          date = date < 10 ? "0" + date : date;
+
+          // display date and time
+          var period = hours < 12 ? "AM" : "PM";
+          status_time.innerHTML = hours + ":" + minutes ;
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+    
+</body>
+
+</html>
+
+
